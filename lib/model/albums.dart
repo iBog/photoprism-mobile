@@ -53,5 +53,5 @@ class Albums extends Table {
   DateTimeColumn? get deletedAt => dateTime().nullable()();
 
   @override
-  Set<Column<dynamic>> get primaryKey => <Column<dynamic>>{id};
+  Set<Column> get primaryKey => {id};
 }

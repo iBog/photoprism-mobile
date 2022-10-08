@@ -3,9 +3,9 @@ import 'dart:io' as io;
 import 'dart:math';
 
 import 'package:background_fetch/background_fetch.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:crypto/crypto.dart';
-import 'package:device_info/device_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_uploader/flutter_uploader.dart';
@@ -553,10 +553,10 @@ class PhotoprismUploader {
     final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (io.Platform.isAndroid) {
       final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-      return androidInfo.model;
+      return androidInfo.model ?? 'N/A';
     } else if (io.Platform.isIOS) {
       final IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-      return iosInfo.name;
+      return iosInfo.name ?? 'N/A';
     }
     model.addLogEntry(
         'AutoUploader', 'ERROR: Failed to get name of this device.');
